@@ -8,10 +8,10 @@
         body {
             background: repeating-linear-gradient(
                 90deg, 
-                #2b0606, 
-                #2b0606 50px, 
-                white 50px, 
-                white 100px
+                black, 
+                black 50px, 
+                #fa5c28 50px, 
+                #fa5c28 100px
             );
             color: #fa5c28;
             font-family: Arial, sans-serif;
@@ -20,11 +20,38 @@
             padding: 0;
         }
         h1 {
-            font-size: 7em;
+            font-size: 3em;
             margin-top: 20vh;
+        }
+        .button-container {
+            margin-top: 30px;
+        }
+        .button {
+            background-color: #fa5c28;
+            color: white;
+            font-size: 1.5em;
+            padding: 15px 30px;
+            margin: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #d4571d;
         }
     </style>
 </head>
+<body>
+    <h1>Lilja Jelks Portfolio</h1>
+    <div class="button-container">
+        <a href="about.html" class="button">About Me</a>
+        <a href="services.html" class="button">Services</a>
+        <a href="contact.html" class="button">Contact Me</a>
+    </div>
+</body>
+</html>
+
 <body>
     <h1>Lilja Jelks Portfolio</h1>
 </body>
