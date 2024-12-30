@@ -45,16 +45,17 @@
             background-color: #fa5c28;
         }
 
-        /* Magic cursor effect styles */
+        /* Magic cursor effect styles (isolated) */
         .magic-pointer {
             position: absolute;
             pointer-events: none;
-            width: 20px;
-            height: 20px;
+            width: 10px;
+            height: 10px;
             background-color: rgba(250, 92, 40, 0.7);
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(250, 92, 40, 0.8);
             animation: magic-glow 1.5s infinite alternate;
+            z-index: 9999; /* Ensure it's always on top */
         }
 
         @keyframes magic-glow {
@@ -90,3 +91,4 @@
     </script>
 </body>
 </html>
+
