@@ -50,7 +50,16 @@
     </div>
 </body>
 </html>
+<script>
+    const magicCursor = document.createElement('div');
+    magicCursor.classList.add('magic-pointer');
+    document.body.appendChild(magicCursor);
 
+    document.addEventListener('mousemove', (e) => {
+        magicCursor.style.left = `${e.pageX - 10}px`;  // Adjust the position to center it on the mouse
+        magicCursor.style.top = `${e.pageY - 10}px`;   // Adjust the position to center it on the mouse
+    });
+</script>
 <body>
     <h1>Lilja Jelks Portfolio</h1>
 </body>
