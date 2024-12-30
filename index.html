@@ -6,7 +6,7 @@
     <title>Lilja Jelks Portfolio</title>
     <style>
         body {
- background: repeating-linear-gradient(
+            background: repeating-linear-gradient(
                 90deg, 
                 #2b0606, 
                 #2b0606 50px, 
@@ -19,13 +19,16 @@
             margin: 0;
             padding: 0;
         }
+
         h1 {
             font-size: 5em;
             margin-top: 20vh;
         }
+
         .button-container {
             margin-top: 30px;
         }
+
         .button {
             background-color: #fa5c28;
             color: white;
@@ -37,30 +40,53 @@
             display: inline-block;
             transition: background-color 0.3s;
         }
+
         .button:hover {
             background-color: #fa5c28;
+        }
+
+        /* Magic cursor effect styles */
+        .magic-pointer {
+            position: absolute;
+            pointer-events: none;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(250, 92, 40, 0.7);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(250, 92, 40, 0.8);
+            animation: magic-glow 1.5s infinite alternate;
+        }
+
+        @keyframes magic-glow {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(250, 92, 40, 0.8);
+            }
+            100% {
+                transform: scale(1.5);
+                box-shadow: 0 0 30px rgba(250, 92, 40, 0.9);
+            }
         }
     </style>
 </head>
 <body>
+    <h1>Lilja Jelks Portfolio</h1>
     <div class="button-container">
         <a href="about.html" class="button">About Me</a>
         <a href="services.html" class="button">Services</a>
         <a href="contact.html" class="button">Contact Me</a>
     </div>
-</body>
-</html>
-<script>
-    const magicCursor = document.createElement('div');
-    magicCursor.classList.add('magic-pointer');
-    document.body.appendChild(magicCursor);
 
-    document.addEventListener('mousemove', (e) => {
-        magicCursor.style.left = `${e.pageX - 10}px`;  // Adjust the position to center it on the mouse
-        magicCursor.style.top = `${e.pageY - 10}px`;   // Adjust the position to center it on the mouse
-    });
-</script>
-<body>
-    <h1>Lilja Jelks Portfolio</h1>
+    <!-- JavaScript for magic cursor effect -->
+    <script>
+        const magicCursor = document.createElement('div');
+        magicCursor.classList.add('magic-pointer');
+        document.body.appendChild(magicCursor);
+
+        document.addEventListener('mousemove', (e) => {
+            magicCursor.style.left = `${e.pageX - 10}px`;  // Adjust the position to center it on the mouse
+            magicCursor.style.top = `${e.pageY - 10}px`;   // Adjust the position to center it on the mouse
+        });
+    </script>
 </body>
 </html>
