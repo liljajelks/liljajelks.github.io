@@ -6,37 +6,50 @@
     <title>Lilja Jelks</title>
     <style>
         body {
- background: repeating-linear-gradient(
-                90deg, 
-                #2b0606, 
-                #2b0606 50px, 
-                white 50px, 
-                white 100px
-     );
             color: #fa5c28;
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
         }
+
+        .stripe-container {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 25%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg, 
+                #2b0606, 
+                #2b0606 50px, 
+                white 50px, 
+                white 100px
+            );
+        }
+
         .portfolio-image {
-        max-width: 300px; /* Adjust width */
-        border-radius: 10px; /* Rounded corners */
-        display: block;
-        margin: 20px auto; /* Center the image */
-    }
+            max-width: 300px; /* Adjust width */
+            border-radius: 10px; /* Rounded corners */
+            display: block;
+            margin: 20px auto; /* Center the image */
+        }
+
         .title-stripe {
             background-color: white;
             width: 100%;
             padding: 10px;
         }
+
         h1 {
             font-size: 5em;
             margin-top: 20vh;
         }
+
         .button-container {
             margin-top: 30px;
         }
+
         .button {
             background-color: #fa5c28;
             color: white;
@@ -48,12 +61,14 @@
             display: inline-block;
             transition: background-color 0.3s;
         }
+
         .button:hover {
             background-color: #fa5c28;
         }
     </style>
 </head>
 <body>
+    <div class="stripe-container"></div> <!-- Stripes on the right 25% -->
     <h1 class="title-stripe">Lilja Jelks</h1>
     <div class="button-container">
         <a href="about.html" class="button">About Me</a>
@@ -61,7 +76,7 @@
         <a href="contact.html" class="button">Contact Me</a>
     </div>
     <div>
-    <img src="ProfileLilja.JPG" alt="Lilja's Profile Image" class="portfolio-image">
+        <img src="ProfileLilja.JPG" alt="Lilja's Profile Image" class="portfolio-image">
     </div>
 </body>
 </html>
