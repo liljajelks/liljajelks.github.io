@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pebble Beach Weekend · April 10–12</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sand: #f2ede4;
+            --fog: #ddd9d0;
+            --ocean: #2a4a5e;
+            --deep: #1a2e3b;
+            --kelp: #5c7a4e;
+            --tide: #7fa8b8;
+            --blush: #c9a882;
+            --ember: #d4693a;
+            --cream: #faf7f2;
+            --ink: #1c1c1c;
+            --twilight: #b8c4d4;
+            --lavender: #c4b8d0;
+            --terracotta: #8b4a2e;
+            --sage: #7a8c6e;
+            --stone: #c4a882;
+            --dusk-blue: #6a7d9e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--ink);
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            background: var(--deep);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            opacity: 0.15;
+        }
+
+        .stars {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.1;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 0.9;
+                transform: scale(1.2);
+            }
+        }
+
+        .horizon {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(42, 74, 94, 0.8), transparent);
+        }
+
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: 9999;
+            animation: sparkleFade var(--life, 0.8s) ease forwards;
+        }
+
+        @keyframes sparkleFade {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0) rotate(200deg);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            animation: heroFadeIn 1.5s ease forwards;
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-eyebrow {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--tide);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 400;
+            color: var(--sand);
+            line-height: 0.9;
+            margin-bottom: 0.3em;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--blush);
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--fog);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            color: var(--tide);
+            border: 1px solid rgba(127, 168, 184, 0.3);
+            display: inline-block;
+            padding: 0.7rem 2rem;
+            text-transform: uppercase;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--tide);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: scrollBounce 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .scroll-hint::after {
+            content: '';
+            width: 1px;
+            height: 30px;
+            background: var(--tide);
+            opacity: 0.5;
+        }
+
+        @keyframes scrollBounce {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(6px);
+            }
+        }
+
+        /* ─── SECTIONS ─── */
+        section {
+            padding: 6rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--blush);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            color: var(--ocean);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+        }
+
+        .section-body {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #3a3a3a;
+            font-weight: 300;
+            max-width: 640px;
+        }
+
+        /* ─── DIVIDER ─── */
+        .divider {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--fog), transparent);
+        }
+
+        /* ─── WISH SECTION ─── */
+        .wish-section {
+            background: linear-gradient(160deg, var(--deep) 60%, #2a2040 100%);
+            color: var(--sand);
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wish-section::before {
+            content: '✦';
+            position: absolute;
+            font-size: 20rem;
+            color: rgba(255, 255, 255, 0.02);
+            top: -3rem;
+            right: -2rem;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .wish-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .wish-section .section-label {
+            color: var(--blush);
+        }
+
+        .wish-section .section-title {
+            color: var(--sand);
+        }
+
+        .wish-section .section-body {
+            color: var(--fog);
+            font-size: 1.3rem;
+        }
+
+        .wish-examples {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--lavender);
+            line-height: 1.6;
+            margin-top: 2.5rem;
+            padding-left: 2rem;
+            border-left: 2px solid var(--lavender);
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        .wish-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--blush);
+            line-height: 1.4;
+            margin-top: 2.5rem;
+            padding-left: 2rem;
+            border-left: 2px solid var(--blush);
+            max-width: 700px;
+        }
+
+        /* ─── LOCATION ─── */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+
+        @media (max-width: 600px) {
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .location-detail {
+            border-top: 1px solid var(--fog);
+            padding-top: 1.2rem;
+        }
+
+        .location-detail h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--blush);
+            margin-bottom: 0.5rem;
+        }
+
+        .location-detail p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #3a3a3a;
+            font-style: italic;
+        }
+
+        /* ─── SCHEDULE ─── */
+        .schedule-section {
+            background: linear-gradient(180deg, var(--sand) 0%, #ede8e0 100%);
+            padding: 6rem 2rem;
+        }
+
+        .schedule-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .day-card {
+            background: var(--cream);
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .day-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .day-card:nth-child(1)::before {
+            background: linear-gradient(90deg, var(--dusk-blue), var(--twilight));
+        }
+
+        .day-card:nth-child(2)::before {
+            background: linear-gradient(90deg, var(--terracotta), var(--ember));
+        }
+
+        .day-card:nth-child(3)::before {
+            background: linear-gradient(90deg, var(--sage), var(--kelp));
+        }
+
+        .day-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--fog);
+            line-height: 1;
+            margin-bottom: 0.2rem;
+        }
+
+        .day-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--blush);
+            margin-bottom: 1.5rem;
+        }
+
+        .day-events {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .day-event {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #3a3a3a;
+        }
+
+        .event-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--blush);
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .event-time {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--blush);
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .event-text {
+            font-style: italic;
+        }
+
+        .event-sub {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: normal;
+            display: block;
+            margin-top: 0.1rem;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: linear-gradient(160deg, var(--deep) 50%, #1a1520 100%);
+            color: var(--fog);
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        footer .big-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: var(--sand);
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            font-size: 1rem;
+            opacity: 0.6;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        /* ─── SCROLL ANIMATIONS ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-up:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .fade-up:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        /* ─── HOUSE PHOTO ─── */
+        .house-photo {
+            margin-top: 2.5rem;
+            position: relative;
+        }
+
+        .house-photo img {
+            width: 100%;
+            max-height: 480px;
+            object-fit: cover;
+            display: block;
+            filter: saturate(0.95) brightness(1.02);
+        }
+
+        .photo-caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--blush);
+            margin-top: 0.8rem;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ─── HERO ─── -->
+    <div class="hero">
+        <div class="stars" id="stars"></div>
+        <div class="horizon"></div>
+
+        <div class="hero-content">
+            <p class="hero-eyebrow">You are invited</p>
+            <h1 class="hero-title">Pebble<br><em>Beach Portal</em></h1>
+            <p class="hero-subtitle">a weekend to get a little creative together</p>
+            <div class="hero-date">April 10 — 12, 2026</div>
+        </div>
+
+        <div class="scroll-hint">scroll</div>
+
+        <svg class="hero-waves" viewBox="0 0 1440 200" preserveAspectRatio="none" fill="white">
+            <path d="M0,80 C240,140 480,20 720,80 C960,140 1200,20 1440,80 L1440,200 L0,200 Z"/>
+            <path d="M0,120 C360,60 720,160 1080,100 C1260,70 1380,130 1440,120 L1440,200 L0,200 Z" opacity="0.5"/>
+        </svg>
+    </div>
+
+    <!-- ─── INTRO ─── -->
+    <section class="fade-up">
+        <p class="section-label">The occasion</p>
+        <h2 class="section-title">A nod to my 27th birthday,<br><em>a weekend for us all!</em></h2>
+        <p class="section-body">
+            Yes, my birthday is the catalyst for this — April 3rd — but this is really about carving out a weekend to be together. To hang out. To be goofy and silly. To make memories together!
+        </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ─── WISH ─── -->
+    <div class="wish-section">
+        <div class="wish-inner">
+            <p class="section-label">One birthday wish</p>
+            <h2 class="section-title">I'm casting a spell<br><em>on all of you</em></h2>
+            <p class="section-body">
+                My one wish is this: I ask each of you to contribute something unique <em>~thing~</em> to the weekend, or more, if the spirit moves you. There are no rules, no limits. Simple or extravagant. Silly or sublime!
+            </p>
+            <p class="wish-examples">Examples include an edible contribution, music serenade, facilitated walk in nature, scavenger hunt...</p>
+        </div>
+    </div>
+
+    <!-- ─── LOCATION ─── -->
+    <section class="fade-up">
+        <p class="section-label">Where we're staying</p>
+        <h2 class="section-title">A glorious house<br><em>by the sea</em></h2>
+        <p class="section-body">
+            My parents have graciously offered their home for the weekend, and I cannot wait to welcome you through the door. It's the kind of place that makes everything feel a little more magical.
+        </p>
+        <div class="house-photo fade-up">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect fill='%23d4c5b0' width='800' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EBeautiful Coastal House%3C/text%3E%3C/svg%3E" alt="Pebble Beach House">
+            <p class="photo-caption">A serene coastal residence</p>
+        </div>
+    </section>
+
+    <!-- ─── SCHEDULE ─── -->
+    <div class="schedule-section">
+        <div class="schedule-inner">
+            <p class="section-label">The Itinerary</p>
+            <h2 class="section-title">Three days of<br><em>celebration</em></h2>
+
+            <div class="days-grid">
+                <!-- Friday -->
+                <div class="day-card fade-up">
+                    <div class="day-number">10</div>
+                    <div class="day-name">Friday</div>
+                    <ul class="day-events">
+                        <li class="day-event">
+                            <span class="event-dot"></span>
+                            <div>
+                                <span class="event-text">Arrival & Check-in</span>
+                                <span class="event-time">3:00 PM</span>
+                            </div>
+                        </li>
+                        <li class="day-event">
+                            <span class="event-dot"></span>
+                            <div>
+                                <span class="event-text">Welcome Dinner</span>
+                                <span class="event-time">6:00 PM</span>
+                            </div>
+                        </li>
+                        <li class="day-event">
+                            <span class="event-dot"></span>
+                            <div>
+                                <span class="event-text">Evening by the Fire</span>
+                                <span class="event-time">8:00 PM</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Saturday -->
+                <div class="day-card fade-up">
+                    <div class="day-number">11</div>
+                    <div class="day-name">Saturday</div>
+                    <ul class="day-events">
+                        <li class="day-event">
+                            <span class="event-dot"></span>
+                            <div>
+                                <span class="event-text">Morning Beach Walk</span>
+                                <span class="event-time">8:00 AM</span>
+                            </div>
+                        </li>
+                        <li class="day-event">
+                            <span class="event-dot"></span>
+                            <div>
+                                <span class="event-text">Your Contributions</span>
+                                <span class="event-sub">Music, food, activities</span>
+                                <span class="event-time">2:00 PM</span>
+                            </div>
+                        </li>
+                        <li class="day-event">
+                            <span class="event-dot"></span>
+                            <div>
+                                <span class="event-text">Celebration Dinner</span>
+                                <span class="event-time">7:00 PM</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sunday -->
+                <div class="day-card fade-up">
+                    <div class="day-number">12</div>
+                    <div class="day-name">Sunday</div>
+                    <ul class="day-events">
+                        <li class="day-event">
+                            <span class="event-dot"></span>
+                            <div>
+                                <span class="event-text">Brunch Together</span>
+                                <span class="event-time">10:00 AM</span>
+                            </div>
+                        </li>
+                        <li class="day-event">
+                            <span class="event-dot"></span>
+                            <div>
+                                <span class="event-text">Free Time & Reflection</span>
+                                <span class="event-time">12:00 PM</span>
+                            </div>
+                        </li>
+                        <li class="day-event">
+                            <span class="event-dot"></span>
+                            <div>
+                                <span class="event-text">Departure</span>
+                                <span class="event-time">4:00 PM</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="big-text">Can't wait to see you</div>
+        <p>RSVP by March 15th • Questions? Let's chat!</p>
+    </footer>
+
+    <script>
+        // Create stars in hero section
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.setProperty('--d', Math.random() * 3 + 2 + 's');
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Intersection Observer for fade-up animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Create sparkle effect on click
+        document.addEventListener('click', function(e) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+            sparkle.style.width = Math.random() * 10 + 5 + 'px';
+            sparkle.style.height = sparkle.style.width;
+            sparkle.style.background = ['#c9a882', '#7fa8b8', '#f2ede4'][Math.floor(Math.random() * 3)];
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => sparkle.remove(), 800);
+        });
+
+        // Initialize
+        createStars();
+    </script>
+</body>
+
+</html>
