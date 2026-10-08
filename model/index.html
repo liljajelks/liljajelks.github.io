@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Lilja Jelks, model, San Francisco. Digitals, editorial, campaign and e-commerce work.">
+<title>Lilja Jelks</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Archivo+Narrow:wght@400;500&display=swap">
+<style>
+body{margin:0} img{max-width:100%} [hidden]{display:none!important}
+/* Layout: a white studio wall. One oversized name, a comp-card spec column, then series hung in even-height rows. The only drama is the spotlight iris at the door. */
+:root {
+  --wall: #f4f4f2; --ink: #131315; --soft: #6d6d72; --line: #dcdcd8;
+  --glow: #e8c4a2; --curtain: #101012; --curtain-ink: #f4f4f2;
+  --display: "Italiana", "Optima", "Gill Sans", sans-serif;
+  --sans: "Archivo Narrow", "Helvetica Neue", Arial, sans-serif;
+  --gut: clamp(16px, 4vw, 56px);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --wall: #101012; --ink: #efeeeb; --soft: #9a9aa0; --line: #2a2a2e;
+  --glow: #e8c4a2; --curtain: #e8c4a2; --curtain-ink: #131315; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --wall: #101012; --ink: #efeeeb; --soft: #9a9aa0; --line: #2a2a2e;
+  --glow: #e8c4a2; --curtain: #e8c4a2; --curtain-ink: #131315; color-scheme: dark }
+
+html { scroll-behavior: smooth; }
+body { background: var(--wall); color: var(--ink); font: 400 16px/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+:focus-visible { outline: 1px solid var(--ink); outline-offset: 4px; }
+.label { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--soft); }
+
+/* entrance */
+.door { position: fixed; inset: 0; z-index: 50; overflow: hidden; display: grid; place-items: center; color: var(--curtain-ink); cursor: pointer;
+  animation: gone 0s linear 3.5s forwards; }
+.door i { position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 200vmax var(--curtain); animation: iris 1.9s cubic-bezier(.7,0,.2,1) 1.5s forwards; }
+.door p { position: relative; margin: 0; font: 400 clamp(30px, 6vw, 68px)/1 var(--display); letter-spacing: .34em; margin-right: -.34em; text-transform: uppercase;
+  animation: breathe 1.5s ease-out both, leave .7s ease-in 1.4s forwards; }
+.door.go { animation-delay: 1.9s; } .door.go i { animation-delay: 0s; } .door.go p { animation: leave .3s ease-in forwards; }
+@keyframes iris { to { width: 150vmax; height: 150vmax; } }
+@keyframes gone { to { visibility: hidden; } }
+@keyframes breathe { from { opacity: 0; letter-spacing: .6em; filter: blur(6px); } to { opacity: 1; letter-spacing: .34em; filter: none; } }
+@keyframes leave { to { opacity: 0; } }
+
+/* bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; display: flex; justify-content: space-between; align-items: baseline; gap: 16px 28px; flex-wrap: wrap;
+  padding: 14px var(--gut); background: color-mix(in srgb, var(--wall) 86%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.bar a { text-decoration: none; }
+.bar .me { font: 400 20px/1 var(--display); letter-spacing: .04em; }
+.bar nav { display: flex; gap: 6px 22px; flex-wrap: wrap; font-size: 13px; color: var(--soft); }
+.bar nav a:hover { color: var(--ink); }
+
+main { padding-inline: var(--gut); padding-block: 0 80px; display: grid; gap: clamp(72px, 11vw, 150px); }
+
+/* opening */
+.open { display: grid; gap: clamp(20px, 3vw, 40px); padding-top: clamp(16px, 4vw, 48px); }
+h1 { margin: 0; font: 400 clamp(56px, 15.5vw, 260px)/.86 var(--display); letter-spacing: -.01em; text-wrap: balance; }
+h1 em { font-style: normal; }
+.card { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(24px, 5vw, 80px); align-items: end; }
+.card img { display: block; width: 100%; height: auto; }
+.spec { display: grid; gap: 22px; min-width: 0; }
+dl { margin: 0; display: grid; }
+dl div { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+dt { color: var(--soft); font-size: 13px; letter-spacing: .06em; }
+dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* series */
+.series { display: grid; gap: 18px; scroll-margin-top: 70px; }
+.series header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+h2 { margin: 0; font: 400 clamp(30px, 4.6vw, 62px)/1 var(--display); letter-spacing: -.01em; }
+.count { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); white-space: nowrap; }
+.row { display: flex; flex-wrap: wrap; gap: clamp(8px, 1.2vw, 18px); }
+.ph { flex: var(--r) 1 0; min-width: 0; overflow: hidden; display: block; cursor: zoom-in; transition: opacity .5s; }
+.ph img { display: block; width: 100%; height: auto; aspect-ratio: var(--r); object-fit: cover; transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
+.row.land .ph { flex: 1 1 calc(50% - 18px); }
+#fashion .ph { flex: var(--r) 1 calc(var(--r) * 22%); }
+.row:hover .ph:not(:hover) { opacity: .45; }
+.ph:hover img { transform: scale(1.03); }
+.js .ph.wait img { transform: scale(1.07); }
+
+/* contact */
+footer { padding: clamp(40px, 8vw, 110px) var(--gut) 56px; border-top: 1px solid var(--line); display: grid; gap: 28px; }
+footer .big { font: 400 clamp(26px, 5.4vw, 84px)/1.05 var(--display); letter-spacing: -.02em; overflow-wrap: anywhere; user-select: all; }
+footer .links { display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: baseline; }
+.copy { border-bottom: 1px solid var(--ink); padding-bottom: 2px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+footer a { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; text-underline-offset: 5px; }
+
+/* viewer */
+dialog { border: 0; padding: 0; margin: 0; width: 100%; height: 100%; max-width: none; max-height: none; background: var(--wall); color: var(--ink); }
+dialog[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+dialog::backdrop { background: var(--wall); }
+dialog .top, dialog .bot { display: flex; justify-content: space-between; align-items: center; padding: 16px var(--gut); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+dialog .stage { display: grid; place-items: center; min-height: 0; padding-inline: var(--gut); }
+dialog .stage img { max-width: 100%; max-height: 100%; object-fit: contain; animation: breathe2 .5s ease-out; }
+@keyframes breathe2 { from { opacity: 0; transform: scale(.985); } }
+dialog button { padding: 8px 0; letter-spacing: inherit; text-transform: inherit; }
+
+@media (max-width: 720px) {
+  .card { grid-template-columns: 1fr; }
+  .row .ph, #fashion .ph { flex: 1 1 calc(50% - 10px); }
+  .row.land .ph { flex-basis: 100%; }
+  .row .ph img { aspect-ratio: auto; }
+  .row:not(.land) .ph img { aspect-ratio: 2 / 3; }
+  .bar nav { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .door { display: none; } html { scroll-behavior: auto; }
+  .ph img, .js .ph.wait img { transition: none; transform: none; } dialog .stage img { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="door" id="door" aria-hidden="true"><i></i><p>Lilja Jelks</p></div>
+
+<main id="top">
+  <section class="open">
+    <h1>Lilja <em>Jelks</em></h1>
+    <div class="card">
+      <img src="p/00.jpg" alt="Lilja Jelks seated, arms crossed over a white chair" width="1440" height="961">
+      <div class="spec">
+        <span class="label">Model · San Francisco, CA</span>
+        <dl>
+          <div><dt>Height</dt><dd>170 cm / 5′7″</dd></div>
+          <div><dt>Bust</dt><dd>84 cm / 33″</dd></div>
+          <div><dt>Waist</dt><dd>69 cm / 27″</dd></div>
+          <div><dt>Hips</dt><dd>96 cm / 38″</dd></div>
+          <div><dt>Top</dt><dd>S</dd></div>
+          <div><dt>Bottom</dt><dd>M</dd></div>
+          <div><dt>Shoe</dt><dd>39 EU / 8 US / 6 UK</dd></div>
+          <div><dt>Hair</dt><dd>Brown</dd></div>
+          <div><dt>Eyes</dt><dd>Brown</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+<section class="series" id="digitals"><header><h2>digitals</h2><span class="count">4 frames</span></header><div class="row">
+<button class="ph" style="--r:0.6667" data-src="p/03.jpg" aria-label="Open digitals photo"><img src="p/03.jpg" alt="Lilja Jelks, digitals" width="720" height="1080" loading="lazy"></button>
+<button class="ph" style="--r:0.6667" data-src="p/04.jpg" aria-label="Open digitals photo"><img src="p/04.jpg" alt="Lilja Jelks, digitals" width="720" height="1080" loading="lazy"></button>
+<button class="ph" style="--r:0.6667" data-src="p/01.jpg" aria-label="Open digitals photo"><img src="p/01.jpg" alt="Lilja Jelks, digitals" width="720" height="1080" loading="lazy"></button>
+<button class="ph" style="--r:0.6667" data-src="p/02.jpg" aria-label="Open digitals photo"><img src="p/02.jpg" alt="Lilja Jelks, digitals" width="720" height="1080" loading="lazy"></button>
+</div></section>
+<section class="series" id="beauty"><header><h2>editorial / beauty</h2><span class="count">4 frames</span></header><div class="row land">
+<button class="ph" style="--r:1.4981" data-src="p/05.jpg" aria-label="Open editorial / beauty photo"><img src="p/05.jpg" alt="Lilja Jelks, editorial / beauty" width="800" height="534" loading="lazy"></button>
+<button class="ph" style="--r:1.4981" data-src="p/06.jpg" aria-label="Open editorial / beauty photo"><img src="p/06.jpg" alt="Lilja Jelks, editorial / beauty" width="800" height="534" loading="lazy"></button>
+<button class="ph" style="--r:1.4981" data-src="p/07.jpg" aria-label="Open editorial / beauty photo"><img src="p/07.jpg" alt="Lilja Jelks, editorial / beauty" width="800" height="534" loading="lazy"></button>
+<button class="ph" style="--r:1.4981" data-src="p/08.jpg" aria-label="Open editorial / beauty photo"><img src="p/08.jpg" alt="Lilja Jelks, editorial / beauty" width="800" height="534" loading="lazy"></button>
+</div></section>
+<section class="series" id="fashion"><header><h2>editorial / fashion</h2><span class="count">8 frames</span></header><div class="row">
+<button class="ph" style="--r:0.8000" data-src="p/09.jpg" aria-label="Open editorial / fashion photo"><img src="p/09.jpg" alt="Lilja Jelks, editorial / fashion" width="640" height="800" loading="lazy"></button>
+<button class="ph" style="--r:0.6675" data-src="p/10.jpg" aria-label="Open editorial / fashion photo"><img src="p/10.jpg" alt="Lilja Jelks, editorial / fashion" width="534" height="800" loading="lazy"></button>
+<button class="ph" style="--r:0.6675" data-src="p/11.jpg" aria-label="Open editorial / fashion photo"><img src="p/11.jpg" alt="Lilja Jelks, editorial / fashion" width="534" height="800" loading="lazy"></button>
+<button class="ph" style="--r:0.6675" data-src="p/12.jpg" aria-label="Open editorial / fashion photo"><img src="p/12.jpg" alt="Lilja Jelks, editorial / fashion" width="534" height="800" loading="lazy"></button>
+<button class="ph" style="--r:0.8000" data-src="p/13.jpg" aria-label="Open editorial / fashion photo"><img src="p/13.jpg" alt="Lilja Jelks, editorial / fashion" width="924" height="1155" loading="lazy"></button>
+<button class="ph" style="--r:0.6675" data-src="p/14.jpg" aria-label="Open editorial / fashion photo"><img src="p/14.jpg" alt="Lilja Jelks, editorial / fashion" width="534" height="800" loading="lazy"></button>
+<button class="ph" style="--r:0.6675" data-src="p/15.jpg" aria-label="Open editorial / fashion photo"><img src="p/15.jpg" alt="Lilja Jelks, editorial / fashion" width="534" height="800" loading="lazy"></button>
+<button class="ph" style="--r:0.6675" data-src="p/16.jpg" aria-label="Open editorial / fashion photo"><img src="p/16.jpg" alt="Lilja Jelks, editorial / fashion" width="534" height="800" loading="lazy"></button>
+</div></section>
+<section class="series" id="campaign"><header><h2>campaign / Baggu</h2><span class="count">4 frames</span></header><div class="row">
+<button class="ph" style="--r:0.6672" data-src="p/17.jpg" aria-label="Open campaign / Baggu photo"><img src="p/17.jpg" alt="Lilja Jelks, campaign / Baggu" width="852" height="1277" loading="lazy"></button>
+<button class="ph" style="--r:0.6669" data-src="p/18.jpg" aria-label="Open campaign / Baggu photo"><img src="p/18.jpg" alt="Lilja Jelks, campaign / Baggu" width="1093" height="1639" loading="lazy"></button>
+<button class="ph" style="--r:0.6669" data-src="p/19.jpg" aria-label="Open campaign / Baggu photo"><img src="p/19.jpg" alt="Lilja Jelks, campaign / Baggu" width="1093" height="1639" loading="lazy"></button>
+<button class="ph" style="--r:0.6669" data-src="p/20.jpg" aria-label="Open campaign / Baggu photo"><img src="p/20.jpg" alt="Lilja Jelks, campaign / Baggu" width="1087" height="1630" loading="lazy"></button>
+</div></section>
+<section class="series" id="ecom"><header><h2>e-commerce / Baggu</h2><span class="count">4 frames</span></header><div class="row">
+<button class="ph" style="--r:0.8000" data-src="p/21.jpg" aria-label="Open e-commerce / Baggu photo"><img src="p/21.jpg" alt="Lilja Jelks, e-commerce / Baggu" width="600" height="750" loading="lazy"></button>
+<button class="ph" style="--r:0.8000" data-src="p/22.jpg" aria-label="Open e-commerce / Baggu photo"><img src="p/22.jpg" alt="Lilja Jelks, e-commerce / Baggu" width="600" height="750" loading="lazy"></button>
+<button class="ph" style="--r:0.8000" data-src="p/23.jpg" aria-label="Open e-commerce / Baggu photo"><img src="p/23.jpg" alt="Lilja Jelks, e-commerce / Baggu" width="600" height="750" loading="lazy"></button>
+<button class="ph" style="--r:0.8000" data-src="p/24.jpg" aria-label="Open e-commerce / Baggu photo"><img src="p/24.jpg" alt="Lilja Jelks, e-commerce / Baggu" width="600" height="750" loading="lazy"></button>
+</div></section>
+<section class="series" id="bw"><header><h2>editorial / B&W</h2><span class="count">4 frames</span></header><div class="row">
+<button class="ph" style="--r:0.6663" data-src="p/25.jpg" aria-label="Open editorial / B&W photo"><img src="p/25.jpg" alt="Lilja Jelks, editorial / B&W" width="533" height="800" loading="lazy"></button>
+<button class="ph" style="--r:0.6663" data-src="p/26.jpg" aria-label="Open editorial / B&W photo"><img src="p/26.jpg" alt="Lilja Jelks, editorial / B&W" width="533" height="800" loading="lazy"></button>
+<button class="ph" style="--r:0.6663" data-src="p/27.jpg" aria-label="Open editorial / B&W photo"><img src="p/27.jpg" alt="Lilja Jelks, editorial / B&W" width="533" height="800" loading="lazy"></button>
+<button class="ph" style="--r:0.6663" data-src="p/28.jpg" aria-label="Open editorial / B&W photo"><img src="p/28.jpg" alt="Lilja Jelks, editorial / B&W" width="533" height="800" loading="lazy"></button>
+</div></section>
+</main>
+
+<footer id="contact">
+  <span class="label">Bookings</span>
+  <div class="big" id="mail">liljajelks@gmail.com</div>
+  <div class="links">
+    <button class="copy" id="copy" type="button">Copy email</button>
+    <a href="https://www.instagram.com/lilja.jelks/" target="_blank" rel="noopener">Instagram @lilja.jelks</a>
+  </div>
+</footer>
+
+<dialog id="view" aria-label="Photo viewer">
+  <div class="top"><span id="vt"></span><button type="button" id="vx">Close</button></div>
+  <div class="stage"><img id="vi" alt=""></div>
+  <div class="bot"><button type="button" id="vp">Previous</button><span id="vn"></span><button type="button" id="vq">Next</button></div>
+</dialog>
+
+<script>
+document.documentElement.classList.add('js');
+const door = document.getElementById('door');
+door.addEventListener('click', () => door.classList.add('go'));
+
+const phs = [...document.querySelectorAll('.ph')];
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.remove('wait'); io.unobserve(e.target); } }), { threshold: .15 });
+  phs.forEach(p => { p.classList.add('wait'); io.observe(p); });
+}
+
+const view = document.getElementById('view'), vi = document.getElementById('vi'), vt = document.getElementById('vt'), vn = document.getElementById('vn');
+let set = [], at = 0;
+function show(i) {
+  at = (i + set.length) % set.length;
+  const p = set[at];
+  vi.style.animation = 'none'; vi.offsetWidth; vi.style.animation = '';
+  vi.src = p.dataset.src; vi.alt = p.querySelector('img').alt;
+  vn.textContent = (at + 1) + ' / ' + set.length;
+}
+phs.forEach(p => p.addEventListener('click', () => {
+  const s = p.closest('.series');
+  set = [...s.querySelectorAll('.ph')];
+  vt.textContent = s.querySelector('h2').textContent;
+  show(set.indexOf(p)); view.showModal();
+}));
+document.getElementById('vx').onclick = () => view.close();
+document.getElementById('vp').onclick = () => show(at - 1);
+document.getElementById('vq').onclick = () => show(at + 1);
+vi.onclick = () => show(at + 1);
+view.addEventListener('keydown', e => { if (e.key === 'ArrowRight') show(at + 1); if (e.key === 'ArrowLeft') show(at - 1); });
+
+const copy = document.getElementById('copy');
+copy.onclick = () => {
+  const done = () => { copy.textContent = 'Copied'; setTimeout(() => copy.textContent = 'Copy email', 1800); };
+  const pick = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById('mail')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try { navigator.clipboard.writeText('liljajelks@gmail.com').then(done, pick); } catch (e) { pick(); }
+};
+</script>
+
+</body>
+</html>
